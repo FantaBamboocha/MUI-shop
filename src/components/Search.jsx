@@ -9,7 +9,7 @@ const Search = (props) => {
       value={value}
       onChange={onChange}
       label="Поиск"
-      //   variant="standard"
+      fullWidth
     />
   );
 };
