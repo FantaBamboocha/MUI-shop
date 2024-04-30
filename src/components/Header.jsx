@@ -8,7 +8,8 @@ const useStyles = makeStyles({
   },
 });
 
-const Header = () => {
+const Header = (props) => {
+  const { handleCart } = props;
   const classes = useStyles();
 
   return (
@@ -21,7 +22,7 @@ const Header = () => {
         >
           MUI SHOP
         </Typography>
-        <IconButton color="inherit">
+        <IconButton color="inherit" onClick={handleCart}>
           <ShoppingCartTwoToneIcon />
         </IconButton>
       </Toolbar>
