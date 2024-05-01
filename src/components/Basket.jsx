@@ -5,6 +5,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 import BasketItem from "./BasketItem";
@@ -23,13 +24,26 @@ const Basket = (props) => {
         </ListItem>
         <Divider />
         {order.length ? (
-          order.map((item) => (
-            <BasketItem
-              key={item.name}
-              removeFromOrder={removeFromOrder}
-              {...item}
-            />
-          ))
+          <>
+            {order.map((item) => (
+              <BasketItem
+                key={item.name}
+                removeFromOrder={removeFromOrder}
+                {...item}
+              />
+            ))}
+            <Divider />
+            <ListItem>
+              <Typography sx={{ fontWeight: "bold" }}>
+                Общая стоимость:{" "}
+                {order.reduce(
+                  (acc, item) => acc + item.price * item.quantity,
+                  0
+                )}{" "}
+                рублей.
+              </Typography>
+            </ListItem>
+          </>
         ) : (
           <ListItem>Корзина пуста</ListItem>
         )}

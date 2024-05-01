@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Badge, IconButton, Toolbar, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 });
 
 const Header = (props) => {
-  const { handleCart } = props;
+  const { handleCart, orderLength } = props;
   const classes = useStyles();
 
   return (
@@ -23,7 +23,9 @@ const Header = (props) => {
           MUI SHOP
         </Typography>
         <IconButton color="inherit" onClick={handleCart}>
-          <ShoppingCartTwoToneIcon />
+          <Badge badgeContent={orderLength} color="primary">
+            <ShoppingCartTwoToneIcon />
+          </Badge>
         </IconButton>
       </Toolbar>
     </AppBar>
